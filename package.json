@@ -1,0 +1,47 @@
+{
+  "name": "my-quick-sql",
+  "version": "1.0.0",
+  "description": "A simple interface library for MySql to help build  CRUD apps that use MySql and express in no time at all",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "docs": "./node_modules/.bin/typedoc --ignoreCompilerErrors --out dist/docs --mode modules ./src/classes ",
+    "test": "mocha  dist/tests/*/*.js --reporter mochawesome --exit",
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test --out dist/docs ",
+    "clean": "rm -r dist",
+    "updateLink": "rm -r dist ; tsc ; sudo npm rm my-quick-sql -g ; sudo npm link"
+  },
+  "keywords": [
+    "mysql",
+    "express",
+    "CRUD"
+  ],
+  "author": "MR-DS",
+  "license": "ISC",
+  "dependencies": {
+    "@types/mysql": "^2.15.15",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.0",
+    "mochawesome": "^6.1.1",
+    "nyc": "^15.1.0",
+    "typedoc": "https://github.com/DatenMetzgerX/typedoc/tarball/typescript-2-build"
+  },
+  "nyc": {
+    "_comment": "Purpose of this part: to do code coverage within Mocha/Chai using Istanbul",
+    "register": "babel-register",
+    "include": [
+      "./dist/**/*.js"
+    ],
+    "exclude": [
+      "**/node_modules/**",
+      "**/test/**",
+      "**/coverage/**"
+    ],
+    "all": true
+  }
+}
