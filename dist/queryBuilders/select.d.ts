@@ -10,7 +10,7 @@ export declare class Select extends queryBuilder {
     where?: Where;
     /**
      *
-     * @param selectFields - Array of strings representing fields to be returned from query. Must be present in the table being queried
+     * @param selectFields - Array of strings representing fields to be returned from query. Must be present in the MySQL table being queried
      * @param table - Table object reflecting the mySQL table to be queried
      * @param where - Optional Where object use to provide WHERE clause's field verb and value
      */

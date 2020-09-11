@@ -1,7 +1,7 @@
 {
   "name": "my-quick-sql",
   "version": "1.0.0",
-  "description": "A simple interface library for MySql to help build  CRUD apps that use MySql and express in no time at all",
+  "description": "A simple library for MySql to help build  CRUD apps that use MySql and express in no time at all",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -17,7 +17,8 @@
     "CRUD"
   ],
   "author": "MR-DS",
-  "license": "ISC",
+  "license": "MIT",
+  "homepage": "https://github.com/MR-DS-20/my-quick-sql",
   "dependencies": {
     "@types/mysql": "^2.15.15",
     "mysql": "^2.18.1"
