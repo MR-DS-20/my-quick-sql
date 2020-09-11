@@ -1,0 +1,213 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>my-quick-sql</title>
+	<meta name="description" content="Documentation for my-quick-sql">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">my-quick-sql</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>my-quick-sql</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#my-quick-sql" id="my-quick-sql" style="color: inherit; text-decoration: none;">
+					<h1>my-quick-sql</h1>
+				</a>
+				<a href="#a-simple-library-to-help-quickly-build-crud-applications-using-express-and-mysql" id="a-simple-library-to-help-quickly-build-crud-applications-using-express-and-mysql" style="color: inherit; text-decoration: none;">
+					<h2>A simple Library to help quickly build CRUD applications using Express and MySQL</h2>
+				</a>
+				<a href="#link-httpsgithubcommr-ds-20my-quick-sqls" id="link-httpsgithubcommr-ds-20my-quick-sqls" style="color: inherit; text-decoration: none;">
+					<h2>[Link] <a href="https://github.com/MR-DS-20/my-quick-sqls">https://github.com/MR-DS-20/my-quick-sqls</a></h2>
+				</a>
+				<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
+					<h2>Getting Started</h2>
+				</a>
+				<ul>
+					<li>Create a connection object to be used throughout the app. </li>
+				</ul>
+				<pre><code>import {Connection} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;my-quick-sql&quot;</span>;
+import { ConnectionConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;mysql&quot;</span>;
+
+const creds:ConnectionConfig = {host:<span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,port:3306,user:<span class="hljs-string">&#x27;root&#x27;</span>,password:<span class="hljs-string">&quot;dbpassword!&quot;</span>,database:<span class="hljs-string">&quot;dbName&quot;</span>}
+const<span class="hljs-built_in"> connection </span>= new Connection(creds)</code></pre><ul>
+					<li>Create a Table object that represents a table in your MySQL schema</li>
+				</ul>
+				<pre><code>import { <span class="hljs-keyword">Table</span>} from <span class="hljs-comment">&quot;my-quick-sql&quot;</span>;
+
+const exampleTable = new <span class="hljs-keyword">Table</span>(
+
+    <span class="hljs-string">&quot;dbName&quot;</span>,
+    <span class="hljs-string">&quot;table_name&quot;</span>
+
+    <span class="hljs-comment">//dbName and table_name must match MySQL database as they will be used in query string</span>
+)</code></pre><ul>
+					<li>Create query objects</li>
+				</ul>
+				<pre><code><span class="hljs-keyword">import</span> { QueryBuilders} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;my-quick-sql&quot;</span>;
+
+<span class="hljs-keyword">const</span> whereClause = <span class="hljs-keyword">new</span> QueryBuilders.Where(<span class="hljs-string">&#x27;field_name&#x27;</span>,<span class="hljs-string">&#x27;LIKE&#x27;</span>,<span class="hljs-string">&#x27;&quot;%String to Search%&quot;&#x27;</span>)
+
+<span class="hljs-keyword">const</span> likeStringQuery = <span class="hljs-keyword">new</span> QueryBuilders.Select([<span class="hljs-string">&#x27;*&#x27;</span>],exampleTable,whereClause)
+
+<span class="hljs-keyword">const</span> selectFieldQuery = <span class="hljs-keyword">new</span> QueryBuiders.Select([<span class="hljs-string">&#x27;field_name&#x27;</span>,<span class="hljs-string">&#x27;field_name2&#x27;</span>],exampleTable)
+</code></pre><ul>
+					<li><p>Run a Query</p>
+						<pre><code>const result = connection.connect(likeStringQuery.build<span class="hljs-constructor">Query()</span>,<span class="hljs-function"> (<span class="hljs-params">err</span>,<span class="hljs-params">result</span>)=&gt;</span>{
+  <span class="hljs-keyword">if</span>(err){
+
+      <span class="hljs-comment">/**
+       * Takes express response object, db engine errror object and otional message, status code. If process.env.ENVIRONMENT set to &#x27;dev&#x27;
+       * db err object will be returned, otherwise message string will be returned
+       */</span>
+      functions.error<span class="hljs-constructor">Response(<span class="hljs-params">res</span>, <span class="hljs-params">err</span>, &#x27;Error <span class="hljs-params">message</span> <span class="hljs-params">string</span>&#x27;,500)</span>
+  }<span class="hljs-keyword">else</span>{
+
+      console.log(result)
+  }
+})</code></pre></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_database_classes_config_.html">&quot;database-<wbr>classes/config&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_database_classes_table_.html">&quot;database-<wbr>classes/table&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_functions_errorresponse_.html">&quot;functions/error<wbr>Response&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_functions_fieldstoquerystring_.html">&quot;functions/fields<wbr>ToQuery<wbr>String&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_functions_functions_module_.html">&quot;functions/functions.module&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_functions_insertresponse_.html">&quot;functions/insert<wbr>Response&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_functions_notauthresponse_.html">&quot;functions/not<wbr>Auth<wbr>Response&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_functions_selectresponse_.html">&quot;functions/select<wbr>Response&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_functions_updateresponse_.html">&quot;functions/update<wbr>Response&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_index_.html">&quot;index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_querybuilders_base_.html">&quot;query<wbr>Builders/base&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_querybuilders_delete_.html">&quot;query<wbr>Builders/delete&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_querybuilders_insert_.html">&quot;query<wbr>Builders/insert&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_querybuilders_querybuilders_module_.html">&quot;query<wbr>Builders/query<wbr>Builders.module&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_querybuilders_select_.html">&quot;query<wbr>Builders/select&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_querybuilders_update_.html">&quot;query<wbr>Builders/update&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_querybuilders_where_.html">&quot;query<wbr>Builders/where&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_tests_functions_fieldstoquerystrings_spec_.html">&quot;tests/functions/fields<wbr>ToQuery<wbr>Strings.spec&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
