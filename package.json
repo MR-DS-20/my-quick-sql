@@ -1,6 +1,6 @@
 {
   "name": "my-quick-sql",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple library for MySql to help build  CRUD apps that use MySql and express in no time at all",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
