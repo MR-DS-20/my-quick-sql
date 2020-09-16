@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fieldsToQueryString = void 0;
 /**
- * whyyyyyyyyy
+ *
  * Returns a string of the fields array to be used in a SELECT statement
  * @param table - Table object to be used to append to field names.
  * @param fields - Converts an Array of fields to a string to be used in the SELECT clause of a SQL statement

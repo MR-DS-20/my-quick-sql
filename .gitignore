@@ -1,6 +1,5 @@
 node_modules
 tsconfig.json
-src
 tests
 node_modules
 .nyc_output

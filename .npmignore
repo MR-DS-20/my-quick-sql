@@ -2,3 +2,6 @@ tsconfig.json
 src
 tests
 .nyc_output
+coverage
+mochawesome-report
+documentation

@@ -14,6 +14,7 @@ import { ConnectionConfig } from "mysql";
 
 const creds:ConnectionConfig = {host:'127.0.0.1',port:3306,user:'root',password:"dbpassword!",database:"dbName"}
 const connection = new Connection(creds)
+//connection.debug = false  //to turn off error mesages being printed in console
 ```
 
 * Create a Table object that represents a table in your MySQL schema
@@ -28,6 +29,7 @@ const exampleTable = new Table(
 
     //dbName and table_name must match MySQL database as they will be used in query string
 )
+
 ```
 
 * Create query objects

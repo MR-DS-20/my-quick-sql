@@ -8,10 +8,7 @@ exports.errorResponse = void 0;
  * @param errMessage message to be returned if env.ENVIRONMENT !==='dev'
  * @param status:number defualts to 500 if not provided. Http error code staus to be set in res.status()
  */
-function errorResponse(res, err, errMessage, status) {
-    if (!status) {
-        let status = 500;
-    }
+function errorResponse(res, err, errMessage, status = 500) {
     if (process.env.ENVIRONMENT === 'dev') {
         res.status(status).send(err);
     }

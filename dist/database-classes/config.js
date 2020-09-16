@@ -17,7 +17,7 @@ class Connection {
         this.pool = mysql_1.createPool(config);
     }
     /**
-     * Displays given error mesage and object in cosole id debugmode is set to true. debugMode=true is default.
+     * Displays given error mesage and object in cosole if debugmode is set to true. debugMode=true is default.
      * @param message message to be displayed
      * @param object typically err object passed from DB engine
      */
